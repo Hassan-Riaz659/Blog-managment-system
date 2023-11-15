@@ -1,0 +1,38 @@
+﻿@page   "/tags/{tagName}"
+@model Blog_managment_system.Web.Pages.Tags.DetailsModel
+@{
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 class="mb-5 display-3">Blogs</h2>
+
+          
+
+            @if (Model.Blogs != null && Model.Blogs.Any())
+            {
+                @foreach (var blog in Model.Blogs)
+                {
+                    <div class="mb-5 bg-light box-shadow">
+                        <img src="@blog.FeaturedImageUrl" alt="@blog.Heading" class="mb-2 d-block img-fluid">
+                        <div class="px-4 pz-4">
+                            <h2 class="mb-2">@blog.Heading</h2>
+                            <p>
+                                Author: @blog.Author
+                                <br>
+                                Date Published: @blog.PublishedDate.ToShortDateString();
+                            </p>
+                            <p class="mb-2">@blog.Shortdescription</p>
+                            <a href="/blog/@blog.UrlHandle" class="btn btn-dark"> Read more</a>
+
+                        </div>
+                    </div>
+                }
+            }
+
+            </divc>
+        </div>
+    </div>
+
+

@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container col-xxl-8 px-4 py-5">
+       <div class="row align-itms-center g-5 py-5">
+           <div class="col-12 col-lg-6">
+               <h1 class="display-5 fw-bold lh-1 mb-3">
+                   Blog Management System - The Development blogs
+               </h1>
+               <p class="lead"> Blog man sys is the home to the coding blogs covering a vast range of topics like HTML, CSS, Javascript, ASP.NET,
+                   C#, Angular, SQL, etc.
+                   Want to read the latest dev articles? Join the BLOG MAN SYS and Get weekly blogs right in your email.
+               </p>
+           </div>
+
+            <div class="col-12 col-lg-6">
+            <img src="https://images.pexels.com/photos/8169/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block mx-lg-auto img-fluid" width="400" />
+
+            </div>
+       </div>
+
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 class="mb-5 display-3">Blogs</h2>
+           
+            <div class="mb-5">
+                @if (Model.Tags != null && Model.Tags.Any())
+                {
+                    foreach (var tag in Model.Tags)
+                    {
+                       <a href="/tags/@tag.Name"> <span class="badge bg-dark">
+                            @tag.Name
+                            </span>
+                        </a>
+                    }
+                }
+            </div>
+
+            @if (Model.Blogs != null && Model.Blogs.Any())
+            {
+                @foreach (var blog in Model.Blogs)
+                {
+                    <div class="mb-5 bg-light box-shadow">
+                        <img src="@blog.FeaturedImageUrl" alt="@blog.Heading" class="mb-2 d-block img-fluid">
+                        <div class="px-4 pz-4">
+                            <h2 class="mb-2">@blog.Heading</h2>
+                            <p>
+                                Author: @blog.Author
+                                <br>
+                                Date Published: @blog.PublishedDate.ToShortDateString();
+                            </p>
+                            <p class="mb-2">@blog.Shortdescription</p>
+                            <a href="/blog/@blog.UrlHandle" class="btn btn-dark"> Read more</a>
+
+                        </div>
+                    </div>
+                }
+            }
+
+        </divc>
+    </div>
+</div>
+
+
