@@ -1,0 +1,83 @@
+﻿@page
+@model Blog_managment_system.Web.Pages.Admin.Users.IndexModel
+@{
+}
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+
+    <div class="container">
+        <h1>Users</h1>
+    </div>
+
+</div>
+
+<div>
+     <div class="container">
+
+         <div class="mb-3 d-flex justify-content-end">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModel">
+                Add User
+            </button>
+         </div>
+
+         <table class="table">
+             <thead>
+                 <tr>
+                     <th>Id</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                 </tr>
+             </thead>
+
+             <tbody>
+                 @foreach(var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.username</td>
+                        <td>@user.Email</td>
+                    </tr>
+                }
+            </tbody>
+         </table>
+     </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addUserModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <lable class="form-label">Username</lable>
+                    <input type="text" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <lable class="form-label">Email</lable>
+                    <input type="email" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <lable class="form-label">Password</lable>
+                    <input type="password" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
